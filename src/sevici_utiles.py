@@ -45,7 +45,7 @@ def calcula_estadisticas(estaciones: list[EstacionSevici]) -> tuple[int, int, fl
     for estacion in estaciones:
         bicicletas_libres += estacion.bicicletas_disponibles
         capacidad_total += estacion.capacidad
-    porcentaje_ocupacion =  (1 -(bicicletas_libres / capacidad_total)) * 100
+    porcentaje_ocupacion =  (1 - (bicicletas_libres / capacidad_total)) * 100
 
     return (bicicletas_libres, capacidad_total, porcentaje_ocupacion, total_estaciones)
 
@@ -60,8 +60,17 @@ def busca_estaciones_direccion(estaciones: list[EstacionSevici], direccion_parci
     Devuelve:
     lista de EstacionSevici que cumplen el criterio
     """
-    # TODO: Ejercicio 3
-    return []
+    if direccion_parcial == "":
+        return []
+
+    texto_crudo = direccion_parcial.lower().strip()
+    lista_estaciones = []
+
+    for estacion in estaciones:
+        direccion_cruda = estacion.direccion.lower().strip()
+        if texto_crudo in direccion_cruda:
+            lista_estaciones.append(estacion)
+    return lista_estaciones
 
 def busca_estaciones_con_disponibilidad(estaciones:list[EstacionSevici], min_disponibilidad: float = 0.5) -> list[EstacionSevici]:
     """

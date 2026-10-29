@@ -1,4 +1,5 @@
 # 🚲 Proyecto de Laboratorio: Estaciones de Alquiler de Bicicletas (Sevici)
+
 ## Fundamentos de Programación 1. Grado en Ingeniería Informática – Inteligencia Artificial (Universidad de Sevilla)
 
 Un equipo de desarrollo ha implementado un prototipo de aplicación para usuarios de la red de alquiler de bicicletas de Sevilla (Sevici). Ya tienen una primera versión de la interfaz, pero necesitan de tus conocimientos sobre **tratamientos secuenciales** para que la aplicación sea funcional.
@@ -22,7 +23,7 @@ Para poder utilizar estas funcionalidades, es necesario resolver los ejercicios 
 
 ## Preparación del entorno
 
-👉 Para configurar Git y clonar el repositorio del laboratorio, consulta **[instrucciones_git.md](https://github.com/FP1-25-26/FP1-LAB01-Calculadora-de-viajes-espaciales/blob/main/instrucciones_git.md)**.  
+👉 Para configurar Git y clonar el repositorio del laboratorio, consulta **[instrucciones_git.md](https://github.com/FP1-25-26/FP1-LAB01-Calculadora-de-viajes-espaciales/blob/main/instrucciones_git.md)**.
 
 👉 Para poder ejecutar la aplicación gráfica, necesitas instalar estas dependencias (ejecuta el comando desde el terminal):
 
@@ -49,11 +50,11 @@ pip install pywebview folium requests
 
 Dispones de estos archivos en `src`:
 
-| Archivo                  | Qué hace                                                                  |
-|--------------------------|---------------------------------------------------------------------------|
-| `sevici_gui.py`      | Interfaz de usuario |
-| `sevici_utiles.py`   | Funciones a implementar por el estudiante
-| `sevici_utiles_test.py` | Pruebas de las funciones del módulo `sevici_utiles.py`|
+| Archivo                   | Qué hace                                                 |
+| ------------------------- | --------------------------------------------------------- |
+| `sevici_gui.py`         | Interfaz de usuario                                       |
+| `sevici_utiles.py`      | Funciones a implementar por el estudiante                 |
+| `sevici_utiles_test.py` | Pruebas de las funciones del módulo `sevici_utiles.py` |
 
 ---
 
@@ -65,6 +66,7 @@ EstacionSevici = namedtuple("EstacionSevici",
 ```
 
 Los campos representan la siguiente información de cada estación:
+
 - nombre: el nombre de la estación, de tipo `str`.
 - direccion: la dirección de la estación, de tipo `str`.
 - latitud: la latitud de la ubicación de la estación, en grados, de tipo `float`.
@@ -74,7 +76,9 @@ Los campos representan la siguiente información de cada estación:
 - bicicletas_disponibles: el número de bicicletas disponibles, de tipo `int`.
 
 ## 📌 Ejercicio 1: Función `selecciona_color`
+
 Implementa la función `selecciona_color` que recibe una estación y devuelve una cadena de texto indicando el color en el que debe pintarse esa estación en la interfaz, en función de la disponibilidad de la misma:
+
 - La disponibilidad se calcula como el número de bicicletas entre la capacidad de la estación. **¡Cuidado!** La capacidad podría ser cero si la estación no está en funcionamiento.
 - Si la disponibilidad es mayor o igual a `2/3`, el color a devolver es `"green"`.
 - Si la disponibilidad es mayor o igual a `1/3`, el color a devolver es `"orange"`.
@@ -86,13 +90,13 @@ Prueba la función ejecutando las pruebas del módulo `sevici_utiles_test.py`. U
 ## 📌 Ejercicio 2: Función `calcula_estadisticas`
 
 Implementa la función `calcula_estadisticas` que recibe una lista de estaciones y devuelve una tupla con las siguientes estadísticas:
+
 - total de bicicletas libres
 - total de capacidad
-- porcentaje de ocupación, correspondiento un 0% a que todas las bicicletas están aparcadas en las estaciones (el número total de bibicletas coincide con la capacidad total), y un 100% a que no hay ninguna bicicleta disponible. 
+- porcentaje de ocupación, correspondiendo un 0% a que todas las bicicletas están aparcadas en las estaciones (el número total de bibicletas coincide con la capacidad total), y un 100% a que no hay ninguna bicicleta disponible.
 - total de estaciones
 
 Prueba la función ejecutando las pruebas del módulo `sevici_utiles_test.py`. Una vez superados los tests, si ejecutas la aplicación gráfica, deberían mostrarse las estadísticas actuales de uso de la red.
-
 
 ## 📌 Ejercicio 3: Función `busca_estaciones_direccion`
 
@@ -102,9 +106,9 @@ Prueba la función ejecutando las pruebas del módulo `sevici_utiles_test.py`. U
 
 ## 📌 Ejercicio 4: Función `busca_estaciones_con_disponibilidad`
 
-Implementa la función `estaciones_con_disponibilidad` que recibe una lista de estaciones y un número real entre 0 y 1, y devuelve una lista con aquellas estaciones que tengan una disponibilidad mayor o igual al valor recibido. 
+Implementa la función `estaciones_con_disponibilidad` que recibe una lista de estaciones y un número real entre 0 y 1, y devuelve una lista con aquellas estaciones que tengan una disponibilidad mayor o igual al valor recibido.
 
-Prueba la función ejecutando las pruebas del módulo `sevici_utiles_test.py`. 
+Prueba la función ejecutando las pruebas del módulo `sevici_utiles_test.py`.
 
 ## 📌 Ejercicio 5: Función `calcula_ruta`
 
@@ -115,7 +119,7 @@ Implementa la función `calcula_ruta`, que recibe una lista de estaciones, y las
 - Función `calcula_distancia`: recibe dos `tuple[float, float]` que representan coordenadas geográficas, y devuelve la distancia entre ambas. Utilice la fórmula de la distancia euclidea.
 - Función `busca_estacion_mas_cercana`: recibe una lista de estaciones y una tupla que indica unas coordenadas geográficas, y devuelve la estación más cercana a dicha ubicación.
 
-Una vez implementada `calcula_ruta`, pruébala ejecutando las pruebas del módulo `sevici_utiles_test.py`. 
+Una vez implementada `calcula_ruta`, pruébala ejecutando las pruebas del módulo `sevici_utiles_test.py`.
 
 ---
 

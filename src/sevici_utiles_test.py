@@ -80,7 +80,7 @@ def test_calcula_estadisticas():
 # resolviendo los ejercicios
 test_selecciona_color()
 test_calcula_estadisticas()
-#test_busca_estacion_direccion()
+test_busca_estacion_direccion()
 #test_estaciones_con_disponibilidad()
 #test_estacion_mas_cercana()
 #test_calcula_ruta()
