@@ -1,4 +1,5 @@
 from collections import namedtuple
+import math
 
 EstacionSevici = namedtuple("EstacionSevici", 
     "nombre, direccion, latitud, longitud, capacidad, puestos_libres, bicicletas_disponibles")
@@ -102,8 +103,13 @@ def calcula_distancia(p1: tuple[float, float], p2: tuple[float, float]) -> float
     Devuelve:
     float: distancia euclídea entre los dos puntos
     """
-    # TODO: Ejercicio 5
-    pass
+    distancia_lat_long = (abs(p1[0] - p2[0]), abs(p1[1] - p2[1]))
+
+    distancia = math.sqrt(distancia_lat_long[0]**2 + distancia_lat_long[1]**2)
+
+    return distancia
+    
+    
 
 def busca_estacion_mas_cercana(estaciones:list[EstacionSevici], punto:tuple[float, float]) -> EstacionSevici | None:
     """
@@ -116,8 +122,18 @@ def busca_estacion_mas_cercana(estaciones:list[EstacionSevici], punto:tuple[floa
     Devuelve:
     EstacionSevici más cercana con al menos una bicicleta disponible, o None si no hay ninguna.
     """ 
-    # TODO: Ejercicio 5
-    return None
+    if len(estaciones) == 0:
+        return None
+    
+    estacion_mas_cercana = None
+    distancia_actual = math.inf
+    for estacion in estaciones:
+        distancia = calcula_distancia((estacion.latitud, estacion.longitud), punto)
+        if distancia < distancia_actual and estacion.bicicletas_disponibles > 0:
+            distancia_actual = distancia
+            estacion_mas_cercana = estacion
+
+    return estacion_mas_cercana
 
 def calcula_ruta(estaciones:list[EstacionSevici], origen:tuple[float, float], destino:tuple[float, float]) -> tuple[EstacionSevici | None, EstacionSevici | None]   :
     """
@@ -131,6 +147,7 @@ def calcula_ruta(estaciones:list[EstacionSevici], origen:tuple[float, float], de
     Devuelve:
     tupla con (estacion_origen, estacion_destino)
     """
-    # TODO: Ejercicio 5
-    pass
+    estacion_origen = busca_estacion_mas_cercana(estaciones, origen)
+    estacion_destino = busca_estacion_mas_cercana(estaciones, destino)
+    return(estacion_origen, estacion_destino)
 
