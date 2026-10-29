@@ -84,8 +84,12 @@ def busca_estaciones_con_disponibilidad(estaciones:list[EstacionSevici], min_dis
     Devuelve:
     lista de EstacionSevici
     """
-    # TODO: Ejercicio 4
-    return estaciones
+    estaciones_disponibles = []
+    for estacion in estaciones:
+        if estacion.capacidad > 0 and estacion.bicicletas_disponibles / estacion.capacidad >= min_disponibilidad:
+            estaciones_disponibles.append(estacion)
+
+    return estaciones_disponibles
 
 def calcula_distancia(p1: tuple[float, float], p2: tuple[float, float]) -> float:
     """
